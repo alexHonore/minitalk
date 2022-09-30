@@ -6,7 +6,7 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:28:17 by anshimiy          #+#    #+#             */
-/*   Updated: 2022/09/29 21:25:05 by anshimiy         ###   ########.fr       */
+/*   Updated: 2022/09/30 14:55:55 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,6 @@ static void	ft_print_signal(int sig, siginfo_t *info, void *context)
 		}
 		write(1, &c, 1);
 		byte = 8;
-		c = 0;
-	}
-}
-
-// c = c | (1 << len)
-//len --> to store the number of bits read
-//char -> to store the character read
-void	handler(int signal)
-{
-	static int	len;
-	static char	c;
-
-	len = 0;
-	c = 0;
-	if (signal == SIGUSR1)
-	{
-		c = c | (1 << len);
-	}
-	len++;
-	if (len == 8)
-	{
-		write(1, &c, 1);
-		if (c == '\0')
-			write(1, "\n", 1);
-		len = 0;
 		c = 0;
 	}
 }
